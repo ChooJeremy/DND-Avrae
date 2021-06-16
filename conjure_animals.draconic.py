@@ -258,6 +258,7 @@ animals = {
 	},
 	"dire wolf": {
 		"name": "Dire Wolf",
+		"name_plural": "Dire Wolves",
 		"to_hit": 5,
 		"damage_roll": "2d6",
 		"damage_bonus": 3,
@@ -288,6 +289,7 @@ animals = {
 	},
 	"giant octopus": {
 		"name": "Giant Octopus",
+		"name_plural": "Giant Octopuses",
 		"to_hit": 5,
 		"damage_roll": "2d6",
 		"damage_bonus": 3,
@@ -352,7 +354,13 @@ animals = {
 if len(args) < 1:
 	T = "Unrecognized input"
 	D = "Need at least 1 input"
-	F = ""
+	animal_choices = []
+	for key in animals:
+		animal_info = animals[key]
+		if animal_info["count"] == 8:
+			animal_choices.append(animal_info["name"])
+	random_choice = randint(len(animal_choices))
+	F = "If you're looking for a random CR 1/4 beast to conjure, may I suggest: " + animal_choices[random_choice]
 	return ""
 animal_input = args[0].lower()
 if animal_input not in animals:
@@ -410,7 +418,7 @@ else:
 ### Computation
 D = ""
 for index, quant in enumerate(override_quantity):
-	#Result is a array of arrays of 2 elements: [hits, nat20, damage]
+	#Result is a array of arrays of 3 elements: [hits, nat20, damage]
 	#They represent AC scores from 11 to 20, unless target_ac is greater than 0, in which case the size is 1.
 	results = []
 	if target_ac > 0:
