@@ -53,3 +53,7 @@ Charge. If the elk moves at least 20 feet straight toward a target and then hits
 Here, Elks split into 2 groups and attack 2 different enemies, both with AC 15.
 The extra damage from Charge is not computed normally, it has to be added in (typically add hits * 7)
 Note that the script doesn't take into account enemies failing on the saving throw and being knocked prone (thus remaining attacks would be at advantage). If you want to take this into account, you need to roll at smaller numbers, i.e. `!ca elk 2`, `!ca elk 2`. Suppose the 2nd group causes a failed saving throw, then do `!ca elk 4 adv` to roll the reminader with advantage.
+
+### FAQ
+Do crits count as hits?
+Yes. If a crit is counted, a hit is counted as well.
