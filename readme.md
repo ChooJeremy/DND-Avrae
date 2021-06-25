@@ -18,6 +18,7 @@ Where args can be, in any order:
 * "acX", where X is a number: Only displays results of ac X rather than from 11 to 20.
 * "X", where X is a number: Sets group size to X rather than the default number. You may specify multiple instances of this parameter.
 * "+X", where X is a number: Adds X to the to hit modifier of all attacking creatures. You may specify multiple instances of this parameter.
+* "-X", where X is a number: Deducts X from the to hit modifier of all attacking creatures. You may specify multiple instances of this parameter.
 
 All arguments are case-insensitive.
 If animal contains multiple words, you must wrap them in quotes (") i.e. `!ca "giant poisonous snake"`

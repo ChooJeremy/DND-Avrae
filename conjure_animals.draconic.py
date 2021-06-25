@@ -484,6 +484,8 @@ for index, arg in enumerate(args):
 		override_disadvantage = True
 	if arg[:1] == "+":
 		to_hit += int(arg[1:])
+	if arg[:1] == "-":
+		to_hit -= int(arg[1:])
 
 animal_info = animals[animal_input]
 if animal_info["has_adv"]:
@@ -512,6 +514,8 @@ else:
 
 if to_hit > 0:
 	T += " [+" + str(to_hit) + " to hit]"
+if to_hit < 0:
+	T += " [" + str(to_hit) + " to hit]"
 
 ### Computation
 D = ""
