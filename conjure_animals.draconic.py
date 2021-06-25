@@ -470,6 +470,7 @@ override_quantity = []
 override_advantage = False
 override_disadvantage = False
 target_ac = 0
+to_hit = 0
 for index, arg in enumerate(args):
 	if index == 0:
 		continue
@@ -481,6 +482,8 @@ for index, arg in enumerate(args):
 		override_advantage = True
 	if arg.lower() == "disadv":
 		override_disadvantage = True
+	if arg[:1] == "+":
+		to_hit += int(arg[1:])
 
 animal_info = animals[animal_input]
 if animal_info["has_adv"]:
@@ -506,6 +509,9 @@ elif override_disadvantage:
 	T += " with disadvantage!"
 else:
 	T += "!"
+
+if to_hit > 0:
+	T += " [+" + str(to_hit) + " to hit]"
 
 ### Computation
 D = ""
@@ -534,7 +540,7 @@ for index, quant in enumerate(override_quantity):
 			if initial_roll == 1:
 				continue
 
-			initial_roll += an_attack["to_hit"]
+			initial_roll += an_attack["to_hit"] + to_hit
 
 			#Damage roll
 			dice_to_roll_string = an_attack["damage_roll"] + "+" + str(an_attack["damage_bonus"])
