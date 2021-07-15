@@ -13,6 +13,7 @@ animals = {
 			"damage_bonus": 2
 		}],
 		"type": "Slashing",
+		"init_mod": 1,
 		"count": 8,
 		"has_adv": False,
 		"Special": ""
@@ -25,6 +26,7 @@ animals = {
 			"damage_bonus": 1
 		}],
 		"type": "Slashing",
+		"init_mod": 0,
 		"count": 8,
 		"has_adv": False,
 		"Special": "Charge. If the boar moves at least 20 feet straight toward a target and then hits it with a tusk attack on the same turn, the target takes an extra 3 (1d6) slashing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone."
@@ -37,6 +39,7 @@ animals = {
 			"damage_bonus": 2
 		}],
 		"type": "Bludgeoning",
+		"init_mod": 2,
 		"count": 8,
 		"has_adv": False,
 		"Special": "Hit: the target is grappled (escape DC 14). Until this grapple ends, the creature is restrained, and the snake can't constrict another target."
@@ -49,6 +52,7 @@ animals = {
 			"damage_bonus": 4
 		}],
 		"type": "Bludgeoning",
+		"init_mod": 0,
 		"count": 8,
 		"has_adv": False,
 		"Special": ""
@@ -61,6 +65,7 @@ animals = {
 			"damage_bonus": 3
 		}],
 		"type": "Bludgeoning",
+		"init_mod": 0,
 		"count": 8,
 		"has_adv": False,
 		"Special": "Charge. If the elk moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 7 (2d6) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
@@ -77,6 +82,7 @@ animals = {
 			"damage_bonus": 1
 		}],
 		"type": "Piercing and Slashing",
+		"init_mod": 0,
 		"count": 8,
 		"has_adv": False,
 		"Special": ""
@@ -89,6 +95,7 @@ animals = {
 			"damage_bonus": 2
 		}],
 		"type": "Piercing",
+		"init_mod": 3,
 		"count": 8,
 		"has_adv": False,
 		"Special": ""
@@ -101,6 +108,7 @@ animals = {
 			"damage_bonus": 2
 		}],
 		"type": "Piercing",
+		"init_mod": 2,
 		"count": 8,
 		"has_adv": False,
 		"Special": "Hit: the target must succeed on a DC 11 Constitution saving throw or take 10 (3d6) poison damage. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way."
@@ -113,6 +121,7 @@ animals = {
 			"damage_bonus": 1
 		}],
 		"type": "Piercing",
+		"init_mod": 1,
 		"count": 8,
 		"has_adv": False,
 		"Special": "Hit: the target is grappled (escape DC 11). Until this grapple ends, the target is restrained, and the frog can't bite another target."
@@ -125,6 +134,7 @@ animals = {
 			"damage_bonus": 2
 		}],
 		"type": "Piercing",
+		"init_mod": 1,
 		"count": 8,
 		"has_adv": False,
 		"Special": ""
@@ -137,6 +147,7 @@ animals = {
 			"damage_bonus": 1
 		}],
 		"type": "Piercing",
+		"init_mod": 2,
 		"count": 8,
 		"has_adv": False,
 		"Special": ""
@@ -149,6 +160,7 @@ animals = {
 			"damage_bonus": 4
 		}],
 		"type": "Piercing",
+		"init_mod": 4,
 		"count": 8,
 		"has_adv": False,
 		"Special": "Hit: the target must make a DC 11 Constitution saving throw, taking 10 (3d6) poison damage on a failed save, or half as much damage on a successful one."
@@ -161,6 +173,7 @@ animals = {
 			"damage_bonus": 1
 		}],
 		"type": "Piercing",
+		"init_mod": 3,
 		"count": 8,
 		"has_adv": False,
 		"Special": "Hit: the target must make a DC 11 Constitution saving throw, taking 7 (2d6) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way."
@@ -173,6 +186,7 @@ animals = {
 			"damage_bonus": 2
 		}],
 		"type": "Piercing or Slashing",
+		"init_mod": 2,
 		"count": 8,
 		"has_adv": False,
 		"Special": "Pounce. If the panther moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone, the panther can make one bite attack against it as a bonus action. Note: If clawing, reducing damage by number of hits + crits (claws roll 1d4 instead of 1d6)"
@@ -185,6 +199,7 @@ animals = {
 			"damage_bonus": 3
 		}],
 		"type": "Bludgeoning",
+		"init_mod": 0,
 		"count": 8,
 		"has_adv": False,
 		"Special": ""
@@ -198,6 +213,7 @@ animals = {
 			"damage_bonus": 2
 		}],
 		"type": "Piercing",
+		"init_mod": 2,
 		"count": 8,
 		"has_adv": True,
 		"Special": "Hit: if the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone."
@@ -450,9 +466,12 @@ if len(args) < 1:
 	for key in animals:
 		animal_info = animals[key]
 		if animal_info["count"] == 8:
-			animal_choices.append(animal_info["name"])
+			animal_choices.append(animal_info)
 	random_choice = randint(len(animal_choices))
-	F = "If you're looking for a random CR 1/4 beast to conjure, may I suggest: " + animal_choices[random_choice]
+	F = "If you're looking for a random CR 1/4 beast to conjure, may I suggest: " + animal_choices[random_choice]["name"]
+	rolledInit = randint(20)+1
+	rolledInit += animal_choices[random_choice]["init_mod"]
+	F += "\nRolled initiative: " + str(rolledInit) + " [+" + str(animal_choices[random_choice]["init_mod"]) + "] modifier"
 	return ""
 animal_input = args[0].lower()
 if animal_input not in animals:
