@@ -1,6 +1,7 @@
 !alias toad embed
 <drac2>
 args = &ARGS&
+I = "https://i.imgur.com/nQEBY0Y.jpg"
 if len(args) == 0:
 	T = "Unknown input"
 	D = "Expected either: bite or swallow"
@@ -27,3 +28,4 @@ return ""
 -title "{{T}}"
 -desc "{{D}}"
 -footer "{{F}}"
+-thumb "{{I}}"
